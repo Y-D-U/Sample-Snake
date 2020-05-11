@@ -181,9 +181,9 @@ pygame.quit()
     
 
 """game bugs :
-   * Snake goes out of the screen
-   *Snake shrinks when pressed the opposite direction
-   *food appears on the snake"""
+   * Snake goes out of the screen 
+   *Snake shrinks when pressed the key opposite to the direction we are moving (any solution?)
+   *food appears on the snake (any solution ?) """
    
 
 
