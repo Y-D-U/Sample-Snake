@@ -13,10 +13,10 @@ body_position=[]
 
 
 class Food():
-    def __init__(self):
+    def __init__(self,r):
         self.x=150
         self.y=160
-        self.r=5
+        self.r=r
         self.special=False
     def draw(self):
         while True:
@@ -28,19 +28,12 @@ class Food():
         pygame.draw.circle(screen,(255,0,0),(self.x,self.y),self.r)
         if len(body_position)>0:
             body_position.pop(0)
-food=Food()
-specialfood=Food()
-ph=1
-pa=True
-def drawspecial(self):
-        while True:
-            self.x,self.y=random.randint(1,W-self.r),random.randint(1,H-self.r)
-            if (self.x,self.y) in body_position:
-                continue
-            else:
-                break
-        
+food=Food(5)
+
     
+
+    
+
 
 class Snake():
     def __init__(self,x,y):
@@ -77,8 +70,7 @@ def move():
             
         except AttributeError:
             break
-specialfood.x=-1
-specialfood.y=-1
+
 def draw():
     for body in snake_body:
         body.dimension=(body.x,body.y,15,15)
@@ -93,11 +85,7 @@ def drawgamewindow():
     fnt=pygame.font.SysFont("comicsans",30)
     txt=fnt.render("SCORE: "+str(score),1,(0,0,220))
     screen.blit(txt,(5,2))
-    if food.special:
-        drawspecial(specialfood)
-        food.special=False
-    
-    pygame.draw.circle(screen,(0,124,150),(specialfood.x,specialfood.y),10)
+ 
     if redraw:
         food.draw()
         redraw=False
@@ -125,7 +113,7 @@ def checkselfhit():
                     pygame.time.delay(2000)
                     run=False
                     
-y=0
+
     
 score,start=12,0
 
@@ -166,21 +154,9 @@ while run:
             body_coor[0]=(head.x,head.y)
             head.y-=15
 
-    if score%15==0 and not(score==0) and y==0:
-        food.special=True
-        y=1
-        pa=True
-        start=pygame.time.get_ticks()
+
      
-    if not(food.special) and y==1:
-        end=pygame.time.get_ticks()
-        if end-start>=1000:
-            food.special=False
-            pa=False
-            specialfood.x=-1
-            specialfood.y=-1
-            y=0
-            
+
     #htting self
     checkselfhit()
 
@@ -192,7 +168,7 @@ while run:
             snake_body.append(Snake(head.x,head.y))
             score+=1
             
-    
+  
     drawgamewindow()
 
 pygame.quit()
@@ -216,6 +192,3 @@ pygame.quit()
 
 
 
-
-    
-    
